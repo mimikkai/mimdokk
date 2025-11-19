@@ -2,12 +2,13 @@
   "name": "mimdokk",
   "version": "0.0.1",
   "description": "Программа для обработки docx файлов с заменой тегов",
-  "main": "process-docx.js",
+  "main": "lib/docx.ts",
   "bin": {
-    "mimdokk": "./bin/mimdokk.js"
+    "mimdokk": "./bin/mimdokk.ts"
   },
   "scripts": {
-    "start": "node process-docx.js"
+    "start": "node bin/mimdokk.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "docx",
@@ -22,5 +23,12 @@
     "docxtemplater": "^3.47.2",
     "pizzip": "^3.1.6",
     "prompts": "^2.4.2"
+  },
+  "devDependencies": {
+    "@types/chalk": "^0.4.31",
+    "@types/node": "^24.10.1",
+    "@types/pizzip": "^3.0.5",
+    "@types/prompts": "^2.4.9",
+    "typescript": "^5.9.3"
   }
 }

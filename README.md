@@ -1,10 +1,8 @@
-# Программа для обработки DOCX файлов
+# Mimdokk - Обработка DOCX шаблонов
 
-Программа для замены тегов в документах Word (docx) с использованием библиотеки docxtemplater.
+CLI утилита для заполнения docx-шаблонов данными через интерактивный интерфейс.
 
 ## Установка
-
-Установите зависимости:
 
 ```bash
 npm install
@@ -12,111 +10,58 @@ npm install
 
 ## Использование
 
-### Базовый пример
+### Инспекция и заполнение шаблона
 
-1. Создайте файл `example.docx` в Word со следующим содержимым:
-
-```
-Здравствуйте, {{FIRST_NAME}} {{LAST_NAME}}!
-
-Ваши контактные данные:
-- Email: {{EMAIL}}
-- Телефон: {{PHONE}}
-- Должность: {{POSITION}}
-```
-
-2. Запустите программу:
+Команда `inspect` сканирует docx-файл на наличие тегов (например `{{TAG_NAME}}`) и запрашивает значения для них в консоли.
 
 ```bash
-npm start
+# Запуск через npm
+npm start -- inspect path/to/template.docx
+
+# Или напрямую через node (требуется Node.js 25+)
+node bin/mimdokk.ts inspect path/to/template.docx
 ```
 
-или
+### Пример
 
-```bash
-node process-docx.js
-```
+1. Создайте файл `template.docx` с содержимым:
+   ```text
+   Привет, {{NAME}}!
+   ```
 
-3. Результат будет сохранён в файле `output.docx`
+2. Запустите утилиту:
+   ```bash
+   npm start -- inspect template.docx
+   ```
 
-## Синтаксис тегов
+3. Введите значение для `NAME` когда программа попросит.
 
-### Простая замена
+4. Результат сохранится в `template_filled.docx`.
 
-```
-{{VARIABLE_NAME}}
-```
+## Синтаксис шаблонов
 
-### Циклы (списки)
+Используется синтаксис [docxtemplater](https://docxtemplater.com/):
 
-В коде:
-```javascript
-const data = {
-  COMPANY: 'Acme Corp',
-  EMPLOYEES: [
-    { name: 'Алексей', role: 'Backend' },
-    { name: 'Мария', role: 'Frontend' },
-    { name: 'Дмитрий', role: 'DevOps' }
-  ]
-};
-```
-
-В шаблоне Word:
-```
-Компания: {{COMPANY}}
-
-Сотрудники:
-{#EMPLOYEES}
-- {{name}} - {{role}}
-{/EMPLOYEES}
-```
-
-### Условия
-
-В шаблоне:
-```
-{#hasDiscount}
-Скидка применена!
-{/hasDiscount}
-```
-
-## Настройка данных
-
-Отредактируйте объект `userData` в файле `process-docx.js`:
-
-```javascript
-const userData = {
-  FIRST_NAME: 'Иван',
-  LAST_NAME: 'Петров',
-  EMAIL: 'ivan.petrov@example.com',
-  PHONE: '+7 (999) 123-45-67',
-  POSITION: 'Full-stack разработчик'
-};
-```
-
-## Дополнительные возможности
-
-- ✅ Замена простых переменных
-- ✅ Циклы для списков данных
-- ✅ Условные блоки
-- ✅ Сохранение форматирования текста
-- ✅ Поддержка переносов строк
+- `{{VAR}}` — простая замена
+- `{#LIST}}...{{/LIST}}` — циклы
+- `{#BOOL}}...{{/BOOL}}` — условия
 
 ## Структура проекта
 
 ```
 mimdokk/
-├── node_modules/
-├── package.json
-├── process-docx.js      # Основной файл программы
-├── docx        # Шаблон документа (создайте вручную)
-└── output.docx          # Результат обработки
+├── bin/
+│   └── mimdokk.ts       # Точка входа CLI
+├── lib/
+│   ├── docx.ts          # Логика работы с docx
+│   └── ui.ts            # Интерактивный интерфейс
+├── examples/            # Примеры шаблонов
+└── package.json
 ```
 
 ## Требования
 
-- Node.js 12 или выше
-- npm
+- Node.js 25.2.0 или выше (для нативной поддержки TypeScript)
 
 ## Зависимости
 

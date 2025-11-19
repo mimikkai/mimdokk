@@ -21,19 +21,19 @@ tasks:
     desc: "Run document processing in watch mode"
     cmds:
       - echo "🚀 Starting document processor..."
-      - node process-docx.js
+      - npx tsx bin/mimdokk.ts fill examples/contact-info/example.docx
 
   build:
     desc: "Process document with template"
     cmds:
       - echo "🔨 Processing docx file..."
-      - node process-docx.js
+      - npx tsx bin/mimdokk.ts fill examples/contact-info/example.docx
 
   example:
     desc: "Run example from examples folder"
     cmds:
       - echo "🚀 Running example..."
-      - node bin/mimdokk.js fill examples/contact-info/example.docx
+      - npx tsx bin/mimdokk.ts fill examples/contact-info/example.docx
 
   clean:
     desc: "Clean generated output files"
