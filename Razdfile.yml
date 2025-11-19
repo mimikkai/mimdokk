@@ -13,6 +13,8 @@ tasks:
   install:
     desc: Install project dependencies
     cmds:
+      - mise trust
+      - mise install
       - echo "📦 Installing Node.js dependencies..."
       - npm install
   dev:
