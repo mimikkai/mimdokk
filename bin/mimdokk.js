@@ -76,7 +76,10 @@ program
                 console.log(chalk.yellow('⚠️ No tags found in document.'));
             } else {
                 console.log(chalk.blue(`Found ${tags.length} unique tags:`));
-                tags.forEach(tag => console.log(`- ${tag}`));
+                tags.forEach(tag => {
+                    const defaultText = tag.default ? chalk.dim(` (default: ${tag.default})`) : '';
+                    console.log(`- ${tag.name}${defaultText}`);
+                });
             }
 
         } catch (error) {
