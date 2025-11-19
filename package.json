@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Программа для обработки docx файлов с заменой тегов",
   "main": "process-docx.js",
+  "bin": {
+    "mimdokk": "./bin/mimdokk.js"
+  },
   "scripts": {
     "start": "node process-docx.js"
   },
@@ -14,7 +17,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^14.0.2",
     "docxtemplater": "^3.47.2",
-    "pizzip": "^3.1.6"
+    "pizzip": "^3.1.6",
+    "prompts": "^2.4.2"
   }
 }

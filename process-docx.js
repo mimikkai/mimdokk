@@ -50,4 +50,4 @@ const userData = {
 };
 
 // Запускаем обработку
-processDocx('example.docx', 'output.docx', userData);
+processDocx('examples/contact-info/example.docx', 'output.docx', userData);
