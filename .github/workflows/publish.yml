@@ -44,11 +44,12 @@ jobs:
 
       - name: Publish to NPM
         run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> .npmrc
+          npm pkg delete publishConfig
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
           if [[ "${{ github.ref_name }}" == *"-"* ]]; then
-            npm publish --registry=https://registry.npmjs.org --tag next --access public
+            npm publish --tag next --access public
           else
-            npm publish --registry=https://registry.npmjs.org --access public
+            npm publish --access public
           fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

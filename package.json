@@ -7,7 +7,7 @@
   },
   "main": "dist/lib/docx.js",
   "bin": {
-    "mimdokk": "./dist/bin/mimdokk.js"
+    "mimdokk": "dist/bin/mimdokk.js"
   },
   "files": [
     "dist"
