@@ -1,0 +1,37 @@
+mise:
+  tools:
+    task: latest
+    node: lts
+
+tasks:
+  default:
+    desc: "Set up project and start processing documents"
+    cmds:
+      - echo "🚀 Setting up mimdokk project..."
+      - task: install
+      - task: dev
+
+  install:
+    desc: "Install project dependencies"
+    cmds:
+      - echo "📦 Installing Node.js dependencies..."
+      - npm install
+
+  dev:
+    desc: "Run document processing in watch mode"
+    cmds:
+      - echo "🚀 Starting document processor..."
+      - node process-docx.js
+
+  build:
+    desc: "Process document with template"
+    cmds:
+      - echo "🔨 Processing docx file..."
+      - node process-docx.js
+
+  clean:
+    desc: "Clean generated output files"
+    cmds:
+      - echo "🧹 Cleaning output files..."
+      - powershell -Command "Remove-Item -Path output*.docx -ErrorAction SilentlyContinue"
+      - echo "✅ Cleaned"
