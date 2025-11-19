@@ -1,5 +1,5 @@
 {
-  "name": "mimdokk",
+  "name": "@mimikkai/mimdokk",
   "version": "0.0.1",
   "description": "Программа для обработки docx файлов с заменой тегов",
   "engines": {
@@ -10,6 +10,7 @@
     "mimdokk": "./bin/mimdokk.ts"
   },
   "scripts": {
+    "build": "tsc",
     "start": "node bin/mimdokk.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,7 +19,11 @@
     "template",
     "document"
   ],
-  "author": "",
+  "author": "mimikkai",
+  "repository": "https://github.com/mimikkai/mimdokk",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "license": "ISC",
   "dependencies": {
     "chalk": "^4.1.2",

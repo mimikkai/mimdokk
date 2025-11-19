@@ -21,10 +21,10 @@ tasks:
       - echo "🚀 Starting document processor..."
       - node --watch bin/mimdokk.ts fill examples/contact-info/example.docx
   build:
-    desc: Process document with template
+    desc: Build the project
     cmds:
-      - echo "🔨 Processing docx file..."
-      - node bin/mimdokk.ts fill examples/contact-info/example.docx
+      - echo "🔨 Building project..."
+      - npm run build
   clean:
     desc: Clean generated output files
     cmds:

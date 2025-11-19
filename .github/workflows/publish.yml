@@ -1,0 +1,29 @@
+name: Publish Package
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: razd-cli/razd-action@v1.0.1
+
+      - name: Install and Build
+        run: |
+          razd install
+          razd build
+
+      - name: Setup .npmrc
+        run: |
+          echo "@mimikkai:registry=https://npm.pkg.github.com" > .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
+
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
