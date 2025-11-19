@@ -2,6 +2,9 @@
   "name": "mimdokk",
   "version": "0.0.1",
   "description": "Программа для обработки docx файлов с заменой тегов",
+  "engines": {
+    "node": ">=25.2.0"
+  },
   "main": "lib/docx.ts",
   "bin": {
     "mimdokk": "./bin/mimdokk.ts"

@@ -1,43 +1,38 @@
+version: "3"
 mise:
   tools:
+    node: "25.2"
     task: latest
-    node: lts
-
 tasks:
   default:
-    desc: "Set up project and start processing documents"
+    desc: Set up project and start processing documents
     cmds:
       - echo "🚀 Setting up mimdokk project..."
       - task: install
       - task: dev
-
   install:
-    desc: "Install project dependencies"
+    desc: Install project dependencies
     cmds:
       - echo "📦 Installing Node.js dependencies..."
       - npm install
-
   dev:
-    desc: "Run document processing in watch mode"
+    desc: Run document processing in watch mode
     cmds:
       - echo "🚀 Starting document processor..."
-      - npx tsx bin/mimdokk.ts fill examples/contact-info/example.docx
-
+      - node --watch bin/mimdokk.ts fill examples/contact-info/example.docx
   build:
-    desc: "Process document with template"
+    desc: Process document with template
     cmds:
       - echo "🔨 Processing docx file..."
-      - npx tsx bin/mimdokk.ts fill examples/contact-info/example.docx
-
-  example:
-    desc: "Run example from examples folder"
-    cmds:
-      - echo "🚀 Running example..."
-      - npx tsx bin/mimdokk.ts fill examples/contact-info/example.docx
-
+      - node bin/mimdokk.ts fill examples/contact-info/example.docx
   clean:
-    desc: "Clean generated output files"
+    desc: Clean generated output files
     cmds:
       - echo "🧹 Cleaning output files..."
-      - powershell -Command "Remove-Item -Path output*.docx -ErrorAction SilentlyContinue"
+      - rm output*.docx
       - echo "✅ Cleaned"
+  example:
+    desc: Run example from examples folder
+    cmds:
+      - echo "🚀 Running example..."
+      - node bin/mimdokk.ts fill examples/contact-info/example.docx
