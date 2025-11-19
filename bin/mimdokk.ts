@@ -4,8 +4,8 @@ import { Command } from "commander";
 import fs from "fs";
 import path from "path";
 import chalk from "chalk";
-import { extractTags, render } from "../lib/docx.ts";
-import { promptForTags } from "../lib/ui.ts";
+import { extractTags, render } from "../lib/docx";
+import { promptForTags } from "../lib/ui";
 // @ts-ignore
 import packageJson from "../package.json";
 

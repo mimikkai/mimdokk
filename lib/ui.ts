@@ -1,6 +1,6 @@
 import prompts, { PromptObject } from "prompts";
 import chalk from "chalk";
-import { Tag } from "./docx.ts"; // Use .js extension for NodeNext module resolution or just ./docx if bundler handles it. With NodeNext, .js is often required in imports even for .ts files. But let's try without first or check tsconfig.
+import { Tag } from "./docx";
 // With "module": "NodeNext", we should use .js extension in imports for local files if we are compiling to ESM.
 // But we are using tsx. tsx handles it.
 // Let's use .js extension to be safe and standard compliant for NodeNext.
