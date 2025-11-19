@@ -32,7 +32,7 @@ jobs:
           echo "@mimikkai:registry=https://npm.pkg.github.com" > .npmrc
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
 
-      - name: Publish
+      - name: Publish to GitHub Packages
         run: |
           if [[ "${{ github.ref_name }}" == *"-"* ]]; then
             npm publish --tag next
@@ -41,3 +41,14 @@ jobs:
           fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish to NPM
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> .npmrc
+          if [[ "${{ github.ref_name }}" == *"-"* ]]; then
+            npm publish --registry=https://registry.npmjs.org --tag next --access public
+          else
+            npm publish --registry=https://registry.npmjs.org --access public
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
