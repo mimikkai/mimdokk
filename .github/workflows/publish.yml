@@ -32,6 +32,12 @@ jobs:
           echo "@mimikkai:registry=https://npm.pkg.github.com" > .npmrc
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
 
-      - run: npm publish
+      - name: Publish
+        run: |
+          if [[ "${{ github.ref_name }}" == *"-"* ]]; then
+            npm publish --tag next
+          else
+            npm publish
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
