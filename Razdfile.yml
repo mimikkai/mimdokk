@@ -29,6 +29,12 @@ tasks:
       - echo "🔨 Processing docx file..."
       - node process-docx.js
 
+  example:
+    desc: "Run example from examples folder"
+    cmds:
+      - echo "🚀 Running example..."
+      - node bin/mimdokk.js fill examples/contact-info/example.docx
+
   clean:
     desc: "Clean generated output files"
     cmds:
