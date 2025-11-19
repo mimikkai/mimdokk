@@ -48,11 +48,12 @@ node bin/mimdokk.ts inspect path/to/template.docx
 
 ## Синтаксис шаблонов
 
-Используется синтаксис [docxtemplater](https://docxtemplater.com/):
+Используется синтаксис [docxtemplater](https://docxtemplater.com/) с одинарными скобками:
 
-- `{{VAR}}` — простая замена
-- `{#LIST}}...{{/LIST}}` — циклы
-- `{#BOOL}}...{{/BOOL}}` — условия
+- `{VAR}` — простая замена
+- `{VAR|default}` — замена с дефолтным значением (если переменная не задана)
+- `{#LIST}...{/LIST}` — циклы (не протестировано)
+- `{#BOOL}...{/BOOL}` — условия (не протестировано)
 
 ## Структура проекта
 
