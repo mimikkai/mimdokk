@@ -56,7 +56,15 @@ program
       if (!outputPath) {
         const ext = path.extname(file);
         const name = path.basename(file, ext);
-        outputPath = `${name}-filled${ext}`;
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, "0");
+        const day = String(now.getDate()).padStart(2, "0");
+        const hour = String(now.getHours()).padStart(2, "0");
+        const minute = String(now.getMinutes()).padStart(2, "0");
+        const second = String(now.getSeconds()).padStart(2, "0");
+        const timestamp = `${year}-${month}-${day}_${hour}-${minute}-${second}`;
+        outputPath = `${name}-filled-${timestamp}${ext}`;
       }
 
       fs.writeFileSync(outputPath, filledBuffer);
