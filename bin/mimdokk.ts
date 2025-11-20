@@ -6,8 +6,19 @@ import path from "path";
 import chalk from "chalk";
 import { extractTags, render } from "../lib/docx";
 import { promptForTags } from "../lib/ui";
-// @ts-ignore
-import packageJson from "../package.json";
+
+let packageJson: { version: string };
+try {
+  // For development (ts-node)
+  packageJson = require("../package.json");
+} catch {
+  try {
+    // For production (dist/bin/mimdokk.js)
+    packageJson = require("../../package.json");
+  } catch {
+    packageJson = { version: "unknown" };
+  }
+}
 
 const program = new Command();
 
