@@ -1,6 +1,6 @@
 {
   "name": "@mimikkai/mimdokk",
-  "version": "0.0.1-11",
+  "version": "0.0.1-12",
   "description": "Программа для обработки docx файлов с заменой тегов",
   "engines": {
     "node": ">=18.0.0"
@@ -26,7 +26,7 @@
   "author": "mimikkai",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mimikkai/mimdokk.git"
+    "url": "git+https://github.com/mimikkai/mimdokk.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
